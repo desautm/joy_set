@@ -1,0 +1,218 @@
+---
+title: "The Joy of Set"
+author: "Marc-André Désautels"
+format: 
+  revealjs:
+    incremental: true
+    footer: "desautm.github.io/joy_set"
+title-slide-attributes:
+  data-background-color: "black"
+highlight-style: github
+filters:
+  - diagram
+
+diagram:
+  cache: true
+  cache-dir: ./tikz-cache
+  engine:
+    tikz:
+      execpath: pdflatex
+      header-includes:
+        - '\usepackage{setcards}'
+---
+
+# Le jeu SET {background-color="black" background-position="center"}
+
+# {background-image="images/board_game_set.png" background-size="contain" background-position="center"}
+
+## Le jeu SET
+
+- SET est un jeu de cartes inventé par Marsha Falco en 1974 et publié par \textit{Set Enterprises} en 1991.
+- Le jeu est constitué de cartes toutes différentes qui se distinguent selon 4 caractéristiques :
+    - Nombre : 1, 2 ou 3 
+    - Couleur : rouge, violet ou turquoise
+    - Forme : ovale, rectangle ou vague (losange, rectangle arrondi ou vague dans la version originale)
+    - Contenu : vide, hachuré ou plein
+
+## Le jeu SET
+
+Sur chaque carte du jeu SET est imprimé un certain nombre de symboles, comme sur les cartes ci-dessous.
+
+. . .
+
+```{.tikz .centered-tikz}
+%%| filename: trois-cartes-quelconques-set
+%%| width: 100%
+
+% Usage:
+%   \setcard{(x,y)}{number}{shading}{color}{shape}
+%
+% Optional TikZ options can be supplied before the coordinate:
+%   \setcard[rotate=15,scale=.8]{(x,y)}{3}{2}{1}{3}
+%
+% number : 1,2,3
+% shading: 1 plain, 2 striped, 3 solid
+% color  : 1 red, 2 green, 3 purple
+% shape  : 1 diamond, 2 oval, 3 squiggle
+
+\begin{tikzpicture}
+
+\setcard{(0,0)}{1}{3}{1}{2}{white}
+\setcard{(5,0)}{3}{2}{2}{3}{white}
+\setcard{(10,0)}{2}{1}{3}{1}{white}
+
+\end{tikzpicture}
+```
+
+## Couleurs
+
+. . .
+
+```{.tikz .centered-tikz}
+%%| filename: trois-cartes-memes-couleurs-set
+%%| width: 100%
+
+% Usage:
+%   \setcard{(x,y)}{number}{shading}{color}{shape}
+%
+% Optional TikZ options can be supplied before the coordinate:
+%   \setcard[rotate=15,scale=.8]{(x,y)}{3}{2}{1}{3}
+%
+% number : 1,2,3
+% shading: 1 plain, 2 striped, 3 solid
+% color  : 1 red, 2 green, 3 purple
+% shape  : 1 diamond, 2 oval, 3 squiggle
+
+\begin{tikzpicture}
+
+\setcard{(0,0)}{1}{3}{1}{1}{white}
+\setcard{(5,0)}{1}{3}{2}{1}{white}
+\setcard{(10,0)}{1}{3}{3}{1}{white}
+
+\end{tikzpicture}
+```
+
+## Nombres
+
+. . .
+
+```{.tikz .centered-tikz}
+%%| filename: trois-cartes-memes-nombres-set
+%%| width: 100%
+
+% Usage:
+%   \setcard{(x,y)}{number}{shading}{color}{shape}
+%
+% Optional TikZ options can be supplied before the coordinate:
+%   \setcard[rotate=15,scale=.8]{(x,y)}{3}{2}{1}{3}
+%
+% number : 1,2,3
+% shading: 1 plain, 2 striped, 3 solid
+% color  : 1 red, 2 green, 3 purple
+% shape  : 1 diamond, 2 oval, 3 squiggle
+
+\begin{tikzpicture}
+
+\setcard{(0,0)}{1}{3}{1}{1}{white}
+\setcard{(5,0)}{2}{3}{1}{1}{white}
+\setcard{(10,0)}{3}{3}{1}{1}{white}
+
+\end{tikzpicture}
+```
+
+## Formes
+
+. . .
+
+```{.tikz .centered-tikz}
+%%| filename: trois-cartes-memes-formes-set
+%%| width: 100%
+
+% Usage:
+%   \setcard{(x,y)}{number}{shading}{color}{shape}
+%
+% Optional TikZ options can be supplied before the coordinate:
+%   \setcard[rotate=15,scale=.8]{(x,y)}{3}{2}{1}{3}
+%
+% number : 1,2,3
+% shading: 1 plain, 2 striped, 3 solid
+% color  : 1 red, 2 green, 3 purple
+% shape  : 1 diamond, 2 oval, 3 squiggle
+
+\begin{tikzpicture}
+
+\setcard{(0,0)}{1}{1}{1}{1}{white}
+\setcard{(5,0)}{1}{1}{1}{2}{white}
+\setcard{(10,0)}{1}{1}{1}{3}{white}
+
+\end{tikzpicture}
+```
+
+## Remplissages
+
+. . .
+
+```{.tikz .centered-tikz}
+%%| filename: trois-cartes-memes-remplissages-set
+%%| width: 100%
+
+% Usage:
+%   \setcard{(x,y)}{number}{shading}{color}{shape}
+%
+% Optional TikZ options can be supplied before the coordinate:
+%   \setcard[rotate=15,scale=.8]{(x,y)}{3}{2}{1}{3}
+%
+% number : 1,2,3
+% shading: 1 plain, 2 striped, 3 solid
+% color  : 1 red, 2 green, 3 purple
+% shape  : 1 diamond, 2 oval, 3 squiggle
+
+\begin{tikzpicture}
+
+\setcard{(0,0)}{1}{1}{1}{1}{white}
+\setcard{(5,0)}{1}{2}{1}{1}{white}
+\setcard{(10,0)}{1}{3}{1}{1}{white}
+
+\end{tikzpicture}
+```
+
+## But du jeu
+
+Trouver le maximum de **sets**. Un **set** est composé de trois cartes dont les quatre caractéristiques (prises séparément) sont :
+
+- soit totalement identiques (par exemple les trois cartes ont la même couleur),
+- soit totalement différentes (par exemple chacune des trois cartes est d'une couleur différente).
+
+
+## Un SET
+
+Trois attributs identiques et un attribut différent.
+
+. . .
+
+```{.tikz .centered-tikz}
+%%| filename: trois-attributs-identiques-un-different-set
+%%| width: 100%
+
+% Usage:
+%   \setcard{(x,y)}{number}{shading}{color}{shape}
+%
+% Optional TikZ options can be supplied before the coordinate:
+%   \setcard[rotate=15,scale=.8]{(x,y)}{3}{2}{1}{3}
+%
+% number : 1,2,3
+% shading: 1 plain, 2 striped, 3 solid
+% color  : 1 red, 2 green, 3 purple
+% shape  : 1 diamond, 2 oval, 3 squiggle
+
+\begin{tikzpicture}
+
+\setcard{(0,0)}{1}{3}{1}{2}{white}
+\setcard{(5,0)}{2}{3}{1}{2}{white}
+\setcard{(10,0)}{3}{3}{1}{2}{white}
+
+\end{tikzpicture}
+```
+
+- Mêmes formes, mêmes couleurs et mêmes contenus.
+- Nombres différents.

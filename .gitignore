@@ -1,0 +1,5 @@
+\_extensions
+\.quarto
+_quarto.yml
+/.quarto/
+**/*.quarto_ipynb
